@@ -1,38 +1,46 @@
-<h1>Viewing <%= @restaurant.name %></h1>
 
 <div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="card">
+    <p>
+      <h4><%= @restaurant.name %></h4>
+      <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+       </p>
+      <strong>Number:</strong>
+      <%= @restaurant.phone_number %>
+      </p>
+      <p><strong>Category:</strong>
+      <%= @restaurant.category %>
+    </p>
+  <div class="flexybuttons">
+        <span>
+           <%= link_to 'Add Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+        </span>
+        <span>
+          <%= link_to 'Back', restaurants_path, class: "btn btn-danger" %>
+        </span>
+  </div>
+  <hr>
+<table class="table">
+    <thead>
+      <tr>
+        <th>Review</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
 
-  <p id="notice"><%= notice %></p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= @restaurant.name %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= @restaurant.address %>
-  </p>
-
-  <p>
-    <strong>Number:</strong>
-    <%= @restaurant.phone_number %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= @restaurant.category %>
-  </p>
-
-  <%= link_to 'Back', restaurants_path, class: "btn btn-primary" %>
-  <%= link_to 'Add Review', new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
-
-  <ul>
-    <% @restaurant.reviews.each do |review| %>
-    <li>Review: <%= review.content %> | Rating: <%= review.rating %> </li>
-
-    <% end %>
-  </ul>
-
+    <tbody>
+      <% @restaurant.reviews.each do |review| %>
+      <tr>
+        <td> <%= review.content %> </td>
+        <td> <%= review.rating %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+  </div>
 </div>
 

@@ -1,8 +1,5 @@
-<h1>Restaurants#new</h1>
-<p>Find me in app/views/restaurants/new.html.erb</p>
-
-
 <div class="container">
+
 <% if @restaurant.errors.any? %>
   <ul>
     <% @restaurant.errors.full_messages.each do |message| %>
@@ -13,16 +10,26 @@
 
 <%= simple_form_for(@restaurant) do |f| %>
   <%= f.error_notification %>
+<!-- create grid -->
+<div class="col-md-6 col-md-offset-3">
+<div class="card">
+  <h3>Create New Restaurant </h3>
+    <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :phone_number %>
+      <%= f.input :category, collection: ["chinese", "italian", "japanese", "french", "belgian"] %>
+    </div>
+   <div class="flexybuttons">
+      <span class="form-actions">
+        <%= f.button :submit , class: "btn btn-primary"%>
+      </span>
+      <span>
+        <%= link_to 'Back', restaurants_path, class: "btn btn-danger" %>
+      </span>
+   </div>
+   </div>
+</div>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :address %>
-    <%= f.input :phone_number %>
-    <%= f.input :category %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit , class: "btn btn-primary"%>
-  </div>
 <% end %>
 </div>
